@@ -42,11 +42,11 @@ for i in np.arange(0, args["num_models"]):
     model.compile(loss="categorical_crossentropy", optimizer=opt, metrics=["accuracy"])
     H = model.fit_generator(aug.flow(X_train, y_train, batch_size=64), validation_data=(X_test, y_test), epochs=63, steps_per_epoch=len(X_train)//64, verbose=1)
 
-    p = [args["model"], "model_{}.model".fomat(i)]
+    p = [args["model"], "model_{}.model".format(i)]
     model.save(os.path.sep.join(p))
 
-    preds = model.predict(X_test, batch_szie=64)
-    report = classification_report(y_test.argmax(axis=1), pred.argmax(axis=1), target_names=labelNames)
+    preds = model.predict(X_test, batch_size=64)
+    report = classification_report(y_test.argmax(axis=1), preds.argmax(axis=1), target_names=labelNames)
 
     p = [args["output"], "model_{}.txt".format(i)]
     f = open(os.path.sep.join(p), "w")

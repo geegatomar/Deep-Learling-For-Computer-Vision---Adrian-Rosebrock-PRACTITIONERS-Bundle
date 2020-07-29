@@ -3,3 +3,6 @@
 *.model
 *.pyc
 __pycache__
+*.pickle
+*.json
+
