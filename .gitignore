@@ -1,3 +1,5 @@
 *.hdf5
 **/*.hdf5
-
+*.model
+*.pyc
+__pycache__
