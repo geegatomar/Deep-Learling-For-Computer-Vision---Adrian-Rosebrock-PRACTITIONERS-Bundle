@@ -40,7 +40,7 @@ for i in np.arange(0, args["num_models"]):
     model = MiniVGGNet.build(32, 32, 3, 10)
     opt = SGD(lr=0.01, decay=0.01/40, momentum=0.9, nesterov=True)
     model.compile(loss="categorical_crossentropy", optimizer=opt, metrics=["accuracy"])
-    H = model.fit_generator(aug.flow(X_train, y_train, batch_size=64), validation_data=(X_test, y_test), epochs=63, steps_per_epoch=len(X_train)//64, verbose=1)
+    H = model.fit_generator(aug.flow(X_train, y_train, batch_size=64), validation_data=(X_test, y_test), epochs=40, steps_per_epoch=len(X_train)//64, verbose=1)
 
     p = [args["model"], "model_{}.model".format(i)]
     model.save(os.path.sep.join(p))
