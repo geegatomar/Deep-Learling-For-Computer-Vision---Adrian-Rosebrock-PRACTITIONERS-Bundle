@@ -30,6 +30,7 @@ labels = le.fit_transform(labels)
 print("[INFO] loading network...")
 model = ResNet50(weights="imagenet", include_top=False)
 
+# this is suppposed to be 2048 (and not 2048 * 7 * 7) 
 dataset = HDF5DatasetWriter((len(imagePaths), 2048*7*7), args["output"], dataKey="features", bufSize=args["buffer_size"])
 dataset.storeClassLabels(le.classes_)
 
@@ -49,7 +50,8 @@ for i in np.arange(0, len(imagePaths), bs):
 
     batchImages = np.vstack(batchImages)
     features = model.predict(batchImages, batch_size=bs)
-    print(features.shape)
+    #print(features.shape)
+    # This is also supposed to be 2048 (and not 2048 * 7 * 7) because apparently ResNet on predicting should give 2048-d. But for us its giving (7, 7, 2048). I dont understand why
     features = features.reshape((features.shape[0], 2048*7*7))
     dataset.add(features, batchLabels)
     pbar.update(i)
