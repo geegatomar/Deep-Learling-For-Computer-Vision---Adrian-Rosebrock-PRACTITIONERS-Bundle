@@ -12,6 +12,7 @@ import os
 
 
 trainPaths = list(paths.list_images(config.IMAGES_PATH))
+trainPaths = trainPaths[:1250] + trainPaths[12500:12500+1250]
 trainLabels = [p.split(os.path.sep)[-1].split('.')[0] for p in trainPaths]
 
 le = LabelEncoder()
