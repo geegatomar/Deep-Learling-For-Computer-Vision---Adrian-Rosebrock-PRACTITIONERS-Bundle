@@ -14,7 +14,7 @@ from keras import backend as K
 
 class DeeperGoogLeNet:
     @staticmethod
-    def conv_module(x, K, kx, ky, stride, chanDim, padding="same", reg=0.0005, name=None):
+    def conv_module(x, K, kX, kY, stride, chanDim, padding="same", reg=0.0005, name=None):
         (convName, bnName, actName) = (None, None, None)
         if name is not None:
             convName = name + "_conv"
