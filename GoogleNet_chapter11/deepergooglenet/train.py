@@ -7,7 +7,7 @@ from processor.meanpreprocessor import MeanPreprocessor
 from processor.image_to_array_preprocessor import ImageToArrayPreprocessor
 from processor.hdf5_dataset_generator import HDF5DatasetGenerator
 from processor.training_monitor import TrainingMonitor
-# need to import EpochCheckpoint too
+from processor.epochcheckpoint import EpochCheckpoint
 from deeper_googlenet import DeeperGoogLeNet 
 from keras.preprocessing.image import ImageDataGenerator
 from keras.optimizers import Adam
